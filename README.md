@@ -1,73 +1,82 @@
-# Excel Data Transformation Project
-## 📁 Project Overview
-This project demonstrates data cleaning and transformation techniques using Microsoft Excel. The dataset contains customer information, and the goal was to create new calculated columns using text functions and formulas.
+# Excel Text Transformation with Power Query & Formulas
 
-## 📊 Original Data Structure
-The dataset includes the following columns:
+This project demonstrates how to use **Power Query** and **Excel formulas** to clean and transform text data.  
+It highlights two different approaches to solving the same problems — automated transformations in **Power Query** and classic **Excel formulas**.
 
-First Name, Last Name
+---
 
-Phone
+## 📊 Dataset
+The dataset contains customer information, including:
+- First Name / Last Name
+- Phone number
+- Street Address
+- Zipcode
+- Request Date
 
-Street Address
+---
 
-Zipcode
+## 🎯 Objectives
+Using **Power Query** and **Excel formulas**, the exercise covers:
 
-Req Date (Request Date)
+1. Combining text fields → Merging first and last names.  
+2. Extracting substrings → Getting area codes and phone segments.  
+3. Cleaning data → Removing unwanted characters (e.g., dashes, parentheses).  
+4. Standardizing addresses → Extracting only street names.  
+5. Fixing zip codes → Preserving leading zeros.  
+6. Creating custom identifiers → Generating short unique IDs.  
+7. Date formatting → Transforming dates into a custom text format like `(19, July, 2014)`.  
+8. Extracting date parts → Isolating the year from dates.  
 
-## 🛠️ Transformations Applied
-I created several new columns using Excel formulas:
+---
 
-1. Full Name (Column Q)
-Formula: =[@[First Name]] & " " & [@[Last Name]]
-Combines first and last names into a single column.
+## 🛠️ Skills Demonstrated
+- **Power Query transformations**
+  - Split Columns
+  - Merge Columns
+  - Extract Text (Start, End, Range)
+  - Replace Values
+  - Change Data Types
+  - Custom Columns with formulas  
+- **Excel Formulas** for text manipulation  
+- **Data Cleaning & Preparation**  
+- **Automation** with Power Query (refresh when new data is added)  
 
-2. Phone Number Components (Columns R, S)
-Formulas:
+---
 
-Area Code: =LEFT([@Phone], FIND(")", [@Phone])-1)
+## 📐 Excel Formulas Used
 
-Phone Digits: =MID([@Phone], FIND(") ", [@Phone])+2, 8)
+- **Full Name (Column Q)**  
+  ```excel
+  =[@[First Name]] & " " & [@[Last Name]]
 
-3. Numeric Phone (Column T)
-Formula: =SUBSTITUTE(SUBSTITUTE([@Phone], "(", ""), ")", "")
-Removes parentheses from the phone number.
+- **Phone Number Components (Columns R, S)** 
+  ```excel
+  =LEFT([@Phone], FIND(")", [@Phone])-1)         // Area Code
+  =MID([@Phone], FIND(") ", [@Phone])+2, 8)     // Phone Digits
 
-4. Street Name Extraction (Column U)
-Formula: =TRIM(RIGHT(SUBSTITUTE([@[Street Address]], " ", REPT(" ", 100)), 100))
-Extracts the street name (e.g., "Drive", "Avenue") from the full address.
+- **Numeric Phone (Column T)**
+  ```excel
+  =SUBSTITUTE(SUBSTITUTE([@Phone], "(", ""), ")", "")
 
-5. Address-Zipcode Combination (Column V)
-Formula: =[@[Street Address]] & " -" & [@Zipcode]
-Combines street address and zipcode into a single string.
+- **Street Name Extraction (Column U)**
+  ```excel
+  =TRIM(RIGHT(SUBSTITUTE([@[Street Address]], " ", REPT(" ", 100)), 100))
 
-6. Username Generation (Column W)
-Formula: =LEFT([@[First Name]],3) & LEFT([@[Last Name]],3) & [@Area Code]
-Creates a username from the first 3 letters of the first name, last name, and area code.
+- **Address-Zipcode Combination (Column V)**
+  ```excel
+  =[@[Street Address]] & " -" & [@Zipcode]
 
-7. Formatted Date (Column O)
-Formula: ="(" & DAY([@[Req Date]]) & "," & TEXT([@[Req Date]],"MMMM") & "," & YEAR([@[Req Date]]) & ")"
-Formats the date into a readable style (e.g., (19,July,2014)).
+- **Username Generation (Column W)**
+  ```excel
+  =LEFT([@[First Name]],3) & LEFT([@[Last Name]],3) & [@Area Code]
 
-8. Year Extracted (Column P)
-Formula: =YEAR([@[Req Date]])
-Extracts the year from the request date.
+- **Formatted Date (Column O)**
+  ```excel
+  ="(" & DAY([@[Req Date]]) & "," & TEXT([@[Req Date]],"MMMM") & "," & YEAR([@[Req Date]]) & ")"
 
-## 📈 Skills Demonstrated
-Advanced Excel functions (LEFT, RIGHT, MID, FIND, SUBSTITUTE, TEXT, TRIM)
+- **Year Extracted (Column P)**
+  ```excel
+  =YEAR([@[Req Date]])
 
-Data cleaning and transformation
-
-String manipulation
-
-Date formatting
-
-Formula automation
-
-## 🚀 How to Use
-Download the Tamrin6_Nina.xlsx file.
-
-Open it in Microsoft Excel.
-
-Explore the formulas in columns Q:W to understand the transformations.
+<img width="1139" height="661" alt="Screenshot 2025-08-21 at 13 27 29" src="https://github.com/user-attachments/assets/a21580fd-95f8-40ee-a9c3-f160fc417b67" />
 
