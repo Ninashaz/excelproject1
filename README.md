@@ -1,6 +1,6 @@
-# Excel Text Transformation with Power Query & Formulas
+# Excel Transformation with Power Query & Formulas
 
-This project demonstrates how to use **Power Query** and **Excel formulas** to clean and transform text data.  
+This project demonstrates how to use **Power Query** and **Excel formulas** to clean and transform data.  
 It highlights two different approaches to solving the same problems — automated transformations in **Power Query** and classic **Excel formulas**.
 
 ---
